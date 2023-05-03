@@ -15,7 +15,7 @@ const Header = () => {
         <div className="wrapper">
           <div className="left">
             <div className="item">
-              <img width={'30'} src="/img/rus.png" alt="" />
+              <img src="/img/rus.png" alt="" />
               <KeyboardArrowDownIcon />
             </div>
             <div className="item">
@@ -29,23 +29,23 @@ const Header = () => {
             </div>
           </div>
           <div className="center">
-            <Link className='link' to="/">Winnie kids</Link>
+            <Link className='link' to="/">WINNIE KIDS</Link>
           </div>
           <div className="right">
             <div className="item">
-              <Link className='link' to="/">Home</Link>
+              <Link className='link' to="/">Домашная</Link>
             </div>
             <div className="item">
-              <Link className='link' to="/">About</Link>
+              <Link className='link' to="/">О нас</Link>
             </div>
             <div className="item">
-              <Link className='link' to="/">Contact</Link>
+              <Link className='link' to="/">Контакты</Link>
             </div>
             <div className="icons">
-              <SearchIcon/>
-              <PersonOutlineIcon/>
-              <FavoriteBorderOutlinedIcon/>
-              <div className="cartIcon">
+              <SearchIcon className='pointer'/>
+              <PersonOutlineIcon className='pointer'/>
+              <FavoriteBorderOutlinedIcon className='pointer'/>
+              <div className="cartIcon pointer">
                 <ShoppingCartOutlinedIcon/>
                 <span>0</span>
               </div>
