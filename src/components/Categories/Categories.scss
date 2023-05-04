@@ -1,0 +1,19 @@
+.categories {
+    height: 500px;
+
+    .row {
+        margin: 0;
+    }
+
+    .top_row {
+        margin-left: -12px;
+        margin-right: -12px;
+    }
+
+    .item {
+        width: 100%;
+        height: 100%;
+        background: red;
+    }
+
+}

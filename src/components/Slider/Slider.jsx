@@ -28,8 +28,8 @@ const Slider = () => {
     return (
         <div className='slider'>
             <div className="wrapper" style={style}>
-                {data.map(url => {
-                    return <img src={url} alt='' />
+                {data.map((url, i) => {
+                    return <img src={url} alt='' key={i} />
                 })}
             </div>
             <div className="slider_btns">
