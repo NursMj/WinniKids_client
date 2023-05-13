@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import SearchIcon from '@mui/icons-material/Search'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import { Link } from 'react-router-dom'
+import Cart from '../Cart/Cart'
 
 import './Header.scss'
 
 const Header = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
   return (
     <div className='header'>
       <div className="container">
@@ -45,7 +48,10 @@ const Header = () => {
               <SearchIcon className='pointer'/>
               <PersonOutlineIcon className='pointer'/>
               <FavoriteBorderOutlinedIcon className='pointer'/>
-              <div className="cartIcon pointer">
+              <div 
+                className="cartIcon pointer"
+                onClick={()=> setIsCartOpen(!isCartOpen)}
+              >
                 <ShoppingCartOutlinedIcon/>
                 <span>0</span>
               </div>
@@ -53,6 +59,8 @@ const Header = () => {
           </div>
         </div>
       </div>
+
+      {!isCartOpen && <Cart />}
     </div>
   )
 }

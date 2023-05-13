@@ -52,8 +52,10 @@ const Product = () => {
                     <button className="add">
                         <AddShoppingCartIcon /> ДОБАВИТЬ В КАРЗИНУ
                     </button>
-                    <div className="link">
-                        <FavoriteBorderIcon />  ДОБАВИТЬ В СПИСОК ЖЕЛАНИЙ
+                    <div className="links">
+                        <div className="item pointer">
+                            <FavoriteBorderIcon />  ДОБАВИТЬ В СПИСОК ЖЕЛАНИЙ
+                        </div>
                     </div>
                     <div className="info">
                         <span>Бренд: H&M</span>

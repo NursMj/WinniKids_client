@@ -39,7 +39,73 @@
         gap: 30px;
 
         .price {
+            font-size: 30px;
+            font-weight: 500;
+            color: #2879fe;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 300;
+            text-align: justify;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            button {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+            }
+        }
+
+        .add {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 250px;
+            padding: 10px;
+            background: #2879fe;
+            color: #fff;
+            border: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
             
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .links {
+            display: flex;
+            .item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: #2879fe;
+                font-size: 16px;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    color: red;
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: gray;
+            font-size: 14px;
         }
     }
 }
