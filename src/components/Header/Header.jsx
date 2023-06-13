@@ -6,21 +6,19 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import { Link } from 'react-router-dom'
 import Cart from '../Cart/Cart'
+import { useSelector } from 'react-redux'
 
 import './Header.scss'
 
 const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const productsInCart = useSelector(state=>state.cart.products)
 
   return (
     <div className='header'>
       <div className="container">
         <div className="wrapper">
           <div className="left">
-            <div className="item">
-              <img src="/img/rus.png" alt="" />
-              <KeyboardArrowDownIcon />
-            </div>
             <div className="item">
               <Link className='link' to="/products/1">Мальчикам</Link>
             </div>
@@ -53,14 +51,14 @@ const Header = () => {
                 onClick={()=> setIsCartOpen(!isCartOpen)}
               >
                 <ShoppingCartOutlinedIcon/>
-                <span>0</span>
+                <span>{productsInCart.length}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {!isCartOpen && <Cart />}
+      {isCartOpen && <Cart />}
     </div>
   )
 }

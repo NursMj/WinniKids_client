@@ -1,14 +1,27 @@
 import React, { useState } from 'react'
 import List from '../../components/List/List'
 import { useParams } from 'react-router-dom'
+import useFetch from '../../hooks/useFetch.js'
 
 import './Products.scss'
 
 const Products = () => {
-
     const categoryId = parseInt(useParams().id)
     const [maxPrice, setMaxPrice] = useState(1000)
-    const [sort, setSort] = useState('def')
+    const [sort, setSort] = useState('asc')
+    const [selectedSubCats, setSelectedSubCats] = useState([])
+
+    const {data, loading, error} = useFetch(`/sub-categories?[filters][categories][id][$eq]=${categoryId}`)
+
+    const handleChange = (e) => {
+        const value = e.target.value
+        const isChecked = e.target.checked
+        setSelectedSubCats(
+            isChecked
+                ? [...selectedSubCats, value]
+                : selectedSubCats.filter((item) => item !== value)
+        )
+    }
 
     return (
         <div className="container">
@@ -16,18 +29,12 @@ const Products = () => {
                 <div className="left">
                     <div className="filterItem">
                         <h2>Категории</h2>
-                        <div className="inputItem">
-                            <input type="checkbox" value={1} id="1" />
-                            <label htmlFor="1">Верх</label>
-                        </div>
-                        <div className="inputItem">
-                            <input type="checkbox" value={2} id="2" />
-                            <label htmlFor="2">Низ</label>
-                        </div>
-                        <div className="inputItem">
-                            <input type="checkbox" value={3} id="3" />
-                            <label htmlFor="3">Обувь</label>
-                        </div>
+                        {data.map((item) => (
+                            <div className="inputItem" key={item.id}>
+                                <input type="checkbox" value={item.id} id={item.id} onChange={handleChange}/>
+                                <label htmlFor={item.id}>{item.attributes.title}</label>
+                            </div>
+                        ))}
                     </div>
                     <div className="filterItem">
                         <h2>Филтровать по цене</h2>
@@ -45,15 +52,6 @@ const Products = () => {
                     </div>
                     <div className="filterItem">
                         <h2>Сортировать</h2>
-                        <div className="inputItem">
-                            <input 
-                                type="radio" 
-                                id="def" 
-                                value="def" 
-                                name='sort' 
-                                onChange={(e) => setSort("def")}/>
-                            <label htmlFor="def">По умолчанию</label>
-                        </div>
                         <div className="inputItem">
                             <input 
                                 type="radio" 
@@ -80,7 +78,12 @@ const Products = () => {
                         src="https://imagebee.org/wwide/cute-desktop-wallpapers/girl_and_dog-wallpapers/girl_and_dog-wallpaper-1024x576.jpg" 
                         alt="" 
                     />
-                    <List categoryId={categoryId} maxPrice={maxPrice} sort={sort}/>
+                    <List 
+                        catId={categoryId} 
+                        maxPrice={maxPrice} 
+                        sort={sort} 
+                        subCats={selectedSubCats}
+                    />
                 </div>
             </div>
         </div>
